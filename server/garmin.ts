@@ -2,11 +2,11 @@ const BASE_URL = "https://personal.connectapi.garmin.com";
 const TOKEN_PATH = "/personalapitoken-service/personal-api/personal-api-key/token";
 
 export class GarminError extends Error {
-  constructor(
-    message: string,
-    readonly kind: "auth" | "upstream",
-  ) {
+  readonly kind: "auth" | "upstream";
+
+  constructor(message: string, kind: "auth" | "upstream") {
     super(message);
+    this.kind = kind;
   }
 }
 

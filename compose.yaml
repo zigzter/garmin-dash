@@ -1,0 +1,10 @@
+services:
+  garmin-dash:
+    build: .
+    pull_policy: build
+    ports:
+      - "8787:8787"
+    environment:
+      GARMIN_API_KEY: ${GARMIN_API_KEY}
+      TZ: ${TZ:-America/Vancouver}
+    restart: unless-stopped

@@ -9,6 +9,7 @@
     "allowImportingTsExtensions": true,
     "skipLibCheck": true,
     "verbatimModuleSyntax": true,
+    "erasableSyntaxOnly": true,
     "types": ["node"],
     "lib": ["ES2023", "DOM"]
   },

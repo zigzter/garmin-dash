@@ -1,4 +1,5 @@
 import { serve } from "@hono/node-server";
+import { serveStatic } from "@hono/node-server/serve-static";
 import { Hono } from "hono";
 import type { Activity, ApiError, HealthDay } from "./api.types.ts";
 import { GarminError, garminDownload, garminGet } from "./garmin.ts";
@@ -72,4 +73,7 @@ app.get("/api/activities/:id{[0-9]+}/splits", async (c) => {
   return c.json(parseSplits(zip));
 });
 
-serve({ fetch: app.fetch, hostname: "127.0.0.1", port: 8787 }, ({ port }) => console.log(`API on http://127.0.0.1:${port}`));
+app.use("/*", serveStatic({ root: "./dist" }));
+
+const hostname = process.env.HOST ?? "127.0.0.1";
+serve({ fetch: app.fetch, hostname, port: 8787 }, ({ port }) => console.log(`Listening on http://${hostname}:${port}`));
