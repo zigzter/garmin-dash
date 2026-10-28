@@ -1,6 +1,15 @@
 const BASE_URL = "https://personal.connectapi.garmin.com";
 const TOKEN_PATH = "/personalapitoken-service/personal-api/personal-api-key/token";
 
+export class GarminError extends Error {
+  constructor(
+    message: string,
+    readonly kind: "auth" | "upstream",
+  ) {
+    super(message);
+  }
+}
+
 let token: { value: string; expiresAt: number } | undefined;
 
 async function getToken(forceRefresh = false): Promise<string> {
@@ -10,7 +19,10 @@ async function getToken(forceRefresh = false): Promise<string> {
     method: "POST",
     headers: { Authorization: `ApiKey ${process.env.GARMIN_API_KEY}` },
   });
-  if (!res.ok) throw new Error(`Token request failed: ${res.status} ${await res.text()}`);
+  if (res.status === 401 || res.status === 403) {
+    throw new GarminError("Garmin rejected the API key. It may have expired.", "auth");
+  }
+  if (!res.ok) throw new GarminError(`Token request failed: ${res.status} ${await res.text()}`, "upstream");
 
   const access_token = (await res.text()).trim();
   const { exp } = JSON.parse(Buffer.from(access_token.split(".")[1], "base64url").toString());
@@ -27,7 +39,7 @@ async function request(path: string, params?: Record<string, string | number>): 
   if (res.status === 401) {
     res = await fetch(url, { headers: { Authorization: `Bearer ${await getToken(true)}` } });
   }
-  if (!res.ok) throw new Error(`GET ${path} failed: ${res.status} ${await res.text()}`);
+  if (!res.ok) throw new GarminError(`GET ${path} failed: ${res.status} ${await res.text()}`, "upstream");
   return res;
 }
 

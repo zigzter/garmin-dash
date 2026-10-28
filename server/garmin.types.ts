@@ -26,4 +26,5 @@ export interface ActivitySummary {
   distance?: number;
   duration?: number;
   averageHR?: number;
+  maxHR?: number;
 }

@@ -1,51 +1,91 @@
+import { Download } from "lucide-react";
+import { useEffect, useState } from "react";
+import type { Activity, ApiError } from "../../server/api.types.ts";
 import type { Split } from "../../server/splits.ts";
 import { downloadCsv } from "./csv.ts";
-import { useJson } from "./useJson.ts";
+import { ErrorNotice } from "./ErrorNotice.tsx";
+import { effortFor, effortLabel, formatDuration, formatEffort } from "./format.ts";
+import { Missing } from "./History.tsx";
+import { fetchJson } from "./useJson.ts";
 
-export function Splits({ activityId }: { activityId: number }) {
-  const { data, error } = useJson<Split[]>(`/api/activities/${activityId}/splits`);
+const cache = new Map<number, Promise<Split[]>>();
 
-  if (error) return <p>Error: {error}</p>;
-  if (!data) return <p>Loading splits…</p>;
+export function prefetchSplits(id: number): Promise<Split[]> {
+  let request = cache.get(id);
+  if (!request) {
+    request = fetchJson<Split[]>(`/api/activities/${id}/splits`);
+    request.catch(() => cache.delete(id));
+    cache.set(id, request);
+  }
+  return request;
+}
+
+export function Splits({ activity }: { activity: Activity }) {
+  const [splits, setSplits] = useState<Split[]>();
+  const [error, setError] = useState<ApiError>();
+  const [attempt, setAttempt] = useState(0);
+
+  useEffect(() => {
+    setError(undefined);
+    prefetchSplits(activity.id).then(setSplits, setError);
+  }, [activity.id, attempt]);
+
+  if (error) return <ErrorNotice error={error} retry={() => setAttempt((n) => n + 1)} />;
+
+  const effort = effortFor(activity.type, activity.distance);
+  const hasDistance = effort !== "none";
 
   return (
-    <div>
-      <button onClick={() => downloadCsv(`activity-${activityId}-splits.csv`, data as unknown as Record<string, unknown>[])}>
-        Export CSV
-      </button>
-      <table>
-        <thead>
-          <tr>
-            <th>Lap</th>
-            <th>Distance (km)</th>
-            <th>Time</th>
-            <th>Pace (/km)</th>
-            <th>Avg HR</th>
-            <th>Max HR</th>
-            <th>Ascent (m)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((s) => (
-            <tr key={s.lap}>
-              <td>{s.lap}</td>
-              <td>{s.distanceKm.toFixed(2)}</td>
-              <td>{formatDuration(s.durationSec)}</td>
-              <td>{s.pacePerKm}</td>
-              <td>{s.avgHr}</td>
-              <td>{s.maxHr}</td>
-              <td>{s.elevGainM}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="splits">
+      <div className="splits-head">
+        <span>{splits ? `${splits.length} ${splits.length === 1 ? "lap" : "laps"}` : "Loading laps…"}</span>
+        <button
+          className="button button-primary"
+          disabled={!splits?.length}
+          onClick={() => splits && downloadCsv(csvName(activity), splits as unknown as Record<string, unknown>[])}
+        >
+          <Download size={14} aria-hidden /> Export CSV
+        </button>
+      </div>
+      {splits === undefined ? (
+        <div className="skeleton" style={{ height: 120 }} />
+      ) : splits.length === 0 ? (
+        <p className="muted">This activity has no lap data.</p>
+      ) : (
+        <div className="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Lap</th>
+                {hasDistance && <th scope="col">Distance</th>}
+                <th scope="col">Time</th>
+                {hasDistance && <th scope="col">{effortLabel[effort]}</th>}
+                <th scope="col">Avg HR</th>
+                <th scope="col" className="p2">Max HR</th>
+                {hasDistance && <th scope="col" className="p3">Ascent</th>}
+              </tr>
+            </thead>
+            <tbody>
+              {splits.map((s) => (
+                <tr key={s.lap}>
+                  <td>{s.lap}</td>
+                  {hasDistance && <td>{s.distanceKm.toFixed(2)} km</td>}
+                  <td>{formatDuration(s.durationSec)}</td>
+                  {hasDistance && <td>{formatEffort(effort, s.distanceKm * 1000, s.durationSec) ?? <Missing />}</td>}
+                  <td>{s.avgHr ?? <Missing />}</td>
+                  <td className="p2">{s.maxHr ?? <Missing />}</td>
+                  {hasDistance && <td className="p3">{s.elevGainM === undefined ? <Missing /> : `${s.elevGainM} m`}</td>}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 }
 
-export function formatDuration(sec: number): string {
-  const h = Math.floor(sec / 3600);
-  const m = Math.floor((sec % 3600) / 60);
-  const s = Math.round(sec % 60);
-  return `${h ? `${h}:` : ""}${String(m).padStart(h ? 2 : 1, "0")}:${String(s).padStart(2, "0")}`;
+function csvName(activity: Activity): string {
+  const slug = activity.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  return `${activity.start.slice(0, 10)}-${slug || activity.id}-splits.csv`;
 }

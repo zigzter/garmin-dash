@@ -1,0 +1,438 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-28T00:36:29+00:00",
+  "title": "Design System: Garmin Dash",
+  "extensions": {
+    "colorMeta": {
+      "graphite-ground": {
+        "role": "neutral",
+        "displayName": "Graphite Ground",
+        "canonical": "oklch(0.16 0.008 255)",
+        "tonalRamp": [
+          "oklch(0.15 0.008 255)",
+          "oklch(0.26 0.008 255)",
+          "oklch(0.37 0.008 255)",
+          "oklch(0.48 0.008 255)",
+          "oklch(0.6 0.008 255)",
+          "oklch(0.71 0.008 255)",
+          "oklch(0.83 0.008 255)",
+          "oklch(0.95 0.008 255)"
+        ]
+      },
+      "graphite-panel": {
+        "role": "neutral",
+        "displayName": "Graphite Panel",
+        "canonical": "oklch(0.195 0.009 255)",
+        "tonalRamp": [
+          "oklch(0.15 0.009 255)",
+          "oklch(0.26 0.009 255)",
+          "oklch(0.37 0.009 255)",
+          "oklch(0.48 0.009 255)",
+          "oklch(0.6 0.009 255)",
+          "oklch(0.71 0.009 255)",
+          "oklch(0.83 0.009 255)",
+          "oklch(0.95 0.009 255)"
+        ]
+      },
+      "graphite-panel-hover": {
+        "role": "neutral",
+        "displayName": "Graphite Panel Hover",
+        "canonical": "oklch(0.225 0.01 255)",
+        "tonalRamp": [
+          "oklch(0.15 0.01 255)",
+          "oklch(0.26 0.01 255)",
+          "oklch(0.37 0.01 255)",
+          "oklch(0.48 0.01 255)",
+          "oklch(0.6 0.01 255)",
+          "oklch(0.71 0.01 255)",
+          "oklch(0.83 0.01 255)",
+          "oklch(0.95 0.01 255)"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "oklch(0.28 0.01 255)",
+        "tonalRamp": [
+          "oklch(0.15 0.01 255)",
+          "oklch(0.26 0.01 255)",
+          "oklch(0.37 0.01 255)",
+          "oklch(0.48 0.01 255)",
+          "oklch(0.6 0.01 255)",
+          "oklch(0.71 0.01 255)",
+          "oklch(0.83 0.01 255)",
+          "oklch(0.95 0.01 255)"
+        ]
+      },
+      "hairline-strong": {
+        "role": "neutral",
+        "displayName": "Hairline Strong",
+        "canonical": "oklch(0.36 0.012 255)",
+        "tonalRamp": [
+          "oklch(0.15 0.012 255)",
+          "oklch(0.26 0.012 255)",
+          "oklch(0.37 0.012 255)",
+          "oklch(0.48 0.012 255)",
+          "oklch(0.6 0.012 255)",
+          "oklch(0.71 0.012 255)",
+          "oklch(0.83 0.012 255)",
+          "oklch(0.95 0.012 255)"
+        ]
+      },
+      "text-primary": {
+        "role": "neutral",
+        "displayName": "Text Primary",
+        "canonical": "oklch(0.94 0.005 255)",
+        "tonalRamp": [
+          "oklch(0.15 0.005 255)",
+          "oklch(0.26 0.005 255)",
+          "oklch(0.37 0.005 255)",
+          "oklch(0.48 0.005 255)",
+          "oklch(0.6 0.005 255)",
+          "oklch(0.71 0.005 255)",
+          "oklch(0.83 0.005 255)",
+          "oklch(0.95 0.005 255)"
+        ]
+      },
+      "text-secondary": {
+        "role": "neutral",
+        "displayName": "Text Secondary",
+        "canonical": "oklch(0.76 0.012 255)",
+        "tonalRamp": [
+          "oklch(0.15 0.012 255)",
+          "oklch(0.26 0.012 255)",
+          "oklch(0.37 0.012 255)",
+          "oklch(0.48 0.012 255)",
+          "oklch(0.6 0.012 255)",
+          "oklch(0.71 0.012 255)",
+          "oklch(0.83 0.012 255)",
+          "oklch(0.95 0.012 255)"
+        ]
+      },
+      "text-tertiary": {
+        "role": "neutral",
+        "displayName": "Text Tertiary",
+        "canonical": "oklch(0.64 0.012 255)",
+        "tonalRamp": [
+          "oklch(0.15 0.012 255)",
+          "oklch(0.26 0.012 255)",
+          "oklch(0.37 0.012 255)",
+          "oklch(0.48 0.012 255)",
+          "oklch(0.6 0.012 255)",
+          "oklch(0.71 0.012 255)",
+          "oklch(0.83 0.012 255)",
+          "oklch(0.95 0.012 255)"
+        ]
+      },
+      "signal-blue": {
+        "role": "primary",
+        "displayName": "Signal Blue",
+        "canonical": "oklch(0.72 0.13 250)",
+        "tonalRamp": [
+          "oklch(0.15 0.13 250)",
+          "oklch(0.26 0.13 250)",
+          "oklch(0.37 0.13 250)",
+          "oklch(0.48 0.13 250)",
+          "oklch(0.6 0.13 250)",
+          "oklch(0.71 0.13 250)",
+          "oklch(0.83 0.13 250)",
+          "oklch(0.95 0.13 250)"
+        ]
+      },
+      "signal-blue-wash": {
+        "role": "primary",
+        "displayName": "Signal Blue Wash",
+        "canonical": "oklch(0.72 0.13 250 / 0.14)",
+        "tonalRamp": [
+          "oklch(0.15 0.13 250)",
+          "oklch(0.26 0.13 250)",
+          "oklch(0.37 0.13 250)",
+          "oklch(0.48 0.13 250)",
+          "oklch(0.6 0.13 250)",
+          "oklch(0.71 0.13 250)",
+          "oklch(0.83 0.13 250)",
+          "oklch(0.95 0.13 250)"
+        ]
+      },
+      "signal-blue-hover": {
+        "role": "primary",
+        "displayName": "Signal Blue Hover",
+        "canonical": "oklch(0.78 0.12 250)",
+        "tonalRamp": [
+          "oklch(0.15 0.12 250)",
+          "oklch(0.26 0.12 250)",
+          "oklch(0.37 0.12 250)",
+          "oklch(0.48 0.12 250)",
+          "oklch(0.6 0.12 250)",
+          "oklch(0.71 0.12 250)",
+          "oklch(0.83 0.12 250)",
+          "oklch(0.95 0.12 250)"
+        ]
+      },
+      "signal-blue-pressed": {
+        "role": "primary",
+        "displayName": "Signal Blue Pressed",
+        "canonical": "oklch(0.68 0.13 250)",
+        "tonalRamp": [
+          "oklch(0.15 0.13 250)",
+          "oklch(0.26 0.13 250)",
+          "oklch(0.37 0.13 250)",
+          "oklch(0.48 0.13 250)",
+          "oklch(0.6 0.13 250)",
+          "oklch(0.71 0.13 250)",
+          "oklch(0.83 0.13 250)",
+          "oklch(0.95 0.13 250)"
+        ]
+      },
+      "signal-blue-ink": {
+        "role": "primary",
+        "displayName": "Signal Blue Ink",
+        "canonical": "oklch(0.18 0.03 250)",
+        "tonalRamp": [
+          "oklch(0.15 0.03 250)",
+          "oklch(0.26 0.03 250)",
+          "oklch(0.37 0.03 250)",
+          "oklch(0.48 0.03 250)",
+          "oklch(0.6 0.03 250)",
+          "oklch(0.71 0.03 250)",
+          "oklch(0.83 0.03 250)",
+          "oklch(0.95 0.03 250)"
+        ]
+      },
+      "better-green": {
+        "role": "secondary",
+        "displayName": "Better Green",
+        "canonical": "oklch(0.79 0.14 155)",
+        "tonalRamp": [
+          "oklch(0.15 0.14 155)",
+          "oklch(0.26 0.14 155)",
+          "oklch(0.37 0.14 155)",
+          "oklch(0.48 0.14 155)",
+          "oklch(0.6 0.14 155)",
+          "oklch(0.71 0.14 155)",
+          "oklch(0.83 0.14 155)",
+          "oklch(0.95 0.14 155)"
+        ]
+      },
+      "worse-amber": {
+        "role": "secondary",
+        "displayName": "Worse Amber",
+        "canonical": "oklch(0.81 0.13 75)",
+        "tonalRamp": [
+          "oklch(0.15 0.13 75)",
+          "oklch(0.26 0.13 75)",
+          "oklch(0.37 0.13 75)",
+          "oklch(0.48 0.13 75)",
+          "oklch(0.6 0.13 75)",
+          "oklch(0.71 0.13 75)",
+          "oklch(0.83 0.13 75)",
+          "oklch(0.95 0.13 75)"
+        ]
+      },
+      "error-red": {
+        "role": "tertiary",
+        "displayName": "Error Red",
+        "canonical": "oklch(0.7 0.16 25)",
+        "tonalRamp": [
+          "oklch(0.15 0.16 25)",
+          "oklch(0.26 0.16 25)",
+          "oklch(0.37 0.16 25)",
+          "oklch(0.48 0.16 25)",
+          "oklch(0.6 0.16 25)",
+          "oklch(0.71 0.16 25)",
+          "oklch(0.83 0.16 25)",
+          "oklch(0.95 0.16 25)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "The departure figure or the word \"Normal\" in each recovery metric; the only large type on the page."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "The product name in the top bar."
+      },
+      "title-sm": {
+        "displayName": "Title Small",
+        "purpose": "Section headings and notice headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "The base size; notice paragraphs are capped at 65ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Table cells, metric labels, readings, section meta and buttons (weight 500 for headers and buttons)."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "The date and type line under an activity name."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "API key names and raw error detail only."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The only easing curve for state transitions."
+      },
+      {
+        "name": "state-fast",
+        "value": "150ms",
+        "purpose": "Row and button background changes."
+      },
+      {
+        "name": "chevron-turn",
+        "value": "180ms",
+        "purpose": "The activity chevron rotating 90 degrees."
+      },
+      {
+        "name": "reveal",
+        "value": "200ms",
+        "purpose": "Splits open in place: a 4px rise from 40% opacity."
+      },
+      {
+        "name": "skeleton-pulse",
+        "value": "1.4s ease-in-out infinite",
+        "purpose": "Loading skeleton bars."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "none",
+        "purpose": "All animation and transitions are off under prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "tier-2-hidden",
+        "value": "520px"
+      },
+      {
+        "name": "compact",
+        "value": "600px"
+      },
+      {
+        "name": "tier-3-hidden",
+        "value": "720px"
+      },
+      {
+        "name": "strip-2x2",
+        "value": "900px"
+      },
+      {
+        "name": "two-column",
+        "value": "1200px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Default Button",
+      "kind": "button",
+      "refersTo": "button",
+      "description": "Secondary actions such as Try again.",
+      "html": "<button class=\"ds-btn\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8\"/><path d=\"M21 3v5h-5\"/></svg> Try again</button>",
+      "css": ":host, :root { --bg: oklch(0.16 0.008 255); --panel: oklch(0.195 0.009 255); --panel-hover: oklch(0.225 0.01 255); --line: oklch(0.28 0.01 255); --line-strong: oklch(0.36 0.012 255); --text: oklch(0.94 0.005 255); --text-2: oklch(0.76 0.012 255); --text-3: oklch(0.64 0.012 255); --accent: oklch(0.72 0.13 250); --accent-soft: oklch(0.72 0.13 250 / 0.14); --good: oklch(0.79 0.14 155); --warn: oklch(0.81 0.13 75); --danger: oklch(0.7 0.16 25); --font: system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", sans-serif; --ease: cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn { display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; border: 1px solid var(--line-strong); border-radius: 6px; background: var(--panel); color: var(--text); font: 500 0.8125rem/1 var(--font); cursor: pointer; transition: background-color 150ms var(--ease), border-color 150ms var(--ease); } .ds-btn:hover { background: var(--panel-hover); } .ds-btn:active { background: var(--line); } .ds-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; } .ds-btn:disabled { opacity: 0.5; cursor: not-allowed; }"
+    },
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The main action in context, such as Export CSV.",
+      "html": "<button class=\"ds-btn ds-btn-primary\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"/><path d=\"m7 10 5 5 5-5\"/><path d=\"M12 15V3\"/></svg> Export CSV</button>",
+      "css": ":host, :root { --bg: oklch(0.16 0.008 255); --panel: oklch(0.195 0.009 255); --panel-hover: oklch(0.225 0.01 255); --line: oklch(0.28 0.01 255); --line-strong: oklch(0.36 0.012 255); --text: oklch(0.94 0.005 255); --text-2: oklch(0.76 0.012 255); --text-3: oklch(0.64 0.012 255); --accent: oklch(0.72 0.13 250); --accent-soft: oklch(0.72 0.13 250 / 0.14); --good: oklch(0.79 0.14 155); --warn: oklch(0.81 0.13 75); --danger: oklch(0.7 0.16 25); --font: system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", sans-serif; --ease: cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn { display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; border: 1px solid var(--line-strong); border-radius: 6px; background: var(--panel); color: var(--text); font: 500 0.8125rem/1 var(--font); cursor: pointer; transition: background-color 150ms var(--ease), border-color 150ms var(--ease); } .ds-btn:hover { background: var(--panel-hover); } .ds-btn:active { background: var(--line); } .ds-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; } .ds-btn:disabled { opacity: 0.5; cursor: not-allowed; } .ds-btn-primary { border-color: transparent; background: var(--accent); color: oklch(0.18 0.03 250); } .ds-btn-primary:hover { background: oklch(0.78 0.12 250); } .ds-btn-primary:active { background: oklch(0.68 0.13 250); }"
+    },
+    {
+      "name": "Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "The single raised layer; content inside is divided by hairlines.",
+      "html": "<div class=\"ds-panel\"><div class=\"ds-panel-row\">Mon, Oct 26</div><div class=\"ds-panel-row\">Sun, Oct 25</div></div>",
+      "css": ":host, :root { --bg: oklch(0.16 0.008 255); --panel: oklch(0.195 0.009 255); --panel-hover: oklch(0.225 0.01 255); --line: oklch(0.28 0.01 255); --line-strong: oklch(0.36 0.012 255); --text: oklch(0.94 0.005 255); --text-2: oklch(0.76 0.012 255); --text-3: oklch(0.64 0.012 255); --accent: oklch(0.72 0.13 250); --accent-soft: oklch(0.72 0.13 250 / 0.14); --good: oklch(0.79 0.14 155); --warn: oklch(0.81 0.13 75); --danger: oklch(0.7 0.16 25); --font: system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", sans-serif; --ease: cubic-bezier(0.16, 1, 0.3, 1); } .ds-panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; color: var(--text); font: 400 0.8125rem/1.45 var(--font); font-variant-numeric: tabular-nums; } .ds-panel-row { padding: 8px 12px; } .ds-panel-row + .ds-panel-row { border-top: 1px solid var(--line); }"
+    },
+    {
+      "name": "Recovery Metric",
+      "kind": "custom",
+      "refersTo": "metric-cell",
+      "description": "One cell of the recovery strip: label, departure figure, reading and 30-day trend with the shared day cursor.",
+      "html": "<div class=\"ds-metric\"><div class=\"ds-metric-label\"><span>HRV</span><span></span></div><div class=\"ds-metric-value\" data-tone=\"warn\">−5<small>ms</small></div><div class=\"ds-metric-reading\"><strong>44 ms</strong> · avg 49</div><svg class=\"ds-trend\" viewBox=\"0 0 100 40\" preserveAspectRatio=\"none\"><rect x=\"0\" y=\"16\" width=\"100\" height=\"6\" fill=\"oklch(0.72 0.012 255 / 0.08)\"/><line x1=\"0\" x2=\"100\" y1=\"19\" y2=\"19\" stroke=\"var(--text-3)\" stroke-width=\"1\" stroke-dasharray=\"3 3\" opacity=\"0.7\" vector-effect=\"non-scaling-stroke\"/><path d=\"M3 20L15 17L27 22L39 14L51 21L63 18L75 24L87 19L97 28\" fill=\"none\" stroke=\"var(--text-2)\" stroke-width=\"1.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\" vector-effect=\"non-scaling-stroke\"/><line x1=\"97\" x2=\"97\" y1=\"0\" y2=\"40\" stroke=\"var(--accent)\" stroke-width=\"1\" vector-effect=\"non-scaling-stroke\"/><path d=\"M97 28h0\" stroke=\"var(--warn)\" stroke-width=\"6\" stroke-linecap=\"round\" vector-effect=\"non-scaling-stroke\"/></svg></div>",
+      "css": ":host, :root { --bg: oklch(0.16 0.008 255); --panel: oklch(0.195 0.009 255); --panel-hover: oklch(0.225 0.01 255); --line: oklch(0.28 0.01 255); --line-strong: oklch(0.36 0.012 255); --text: oklch(0.94 0.005 255); --text-2: oklch(0.76 0.012 255); --text-3: oklch(0.64 0.012 255); --accent: oklch(0.72 0.13 250); --accent-soft: oklch(0.72 0.13 250 / 0.14); --good: oklch(0.79 0.14 155); --warn: oklch(0.81 0.13 75); --danger: oklch(0.7 0.16 25); --font: system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", sans-serif; --ease: cubic-bezier(0.16, 1, 0.3, 1); } .ds-metric { width: 280px; padding: 16px 16px 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; color: var(--text); font: 400 0.875rem/1.45 var(--font); font-variant-numeric: tabular-nums; } .ds-metric-label { display: flex; justify-content: space-between; color: var(--text-2); font-size: 0.8125rem; } .ds-metric-value { margin-top: 8px; font-size: 1.75rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; } .ds-metric-value[data-tone=good] { color: var(--good); } .ds-metric-value[data-tone=warn] { color: var(--warn); } .ds-metric-value small { margin-left: 3px; color: var(--text-3); font-size: 0.8125rem; font-weight: 400; letter-spacing: 0; } .ds-metric-reading { margin-top: 4px; font-size: 0.8125rem; color: var(--text-3); } .ds-metric-reading strong { font-weight: 600; color: var(--text-2); } .ds-trend { display: block; width: 100%; height: 56px; margin-top: 12px; cursor: crosshair; }"
+    },
+    {
+      "name": "Data Table",
+      "kind": "custom",
+      "refersTo": "table-row",
+      "description": "Dense 34px rows with hairline rules, right-aligned figures, the blue-wash active row and the em-dash missing mark.",
+      "html": "<div class=\"ds-panel-t\"><table class=\"ds-table\"><thead><tr><th>Date</th><th>Sleep</th><th>HRV</th><th>RHR</th></tr></thead><tbody><tr><td>Today</td><td>7h 20m</td><td>44</td><td>58</td></tr><tr data-active=\"true\" tabindex=\"0\"><td>Mon, Oct 26</td><td>7h 00m</td><td>48</td><td>54</td></tr><tr tabindex=\"0\"><td>Sun, Oct 25</td><td>8h 11m</td><td><span class=\"ds-missing\" aria-label=\"No data\">—</span></td><td>54</td></tr></tbody></table></div>",
+      "css": ":host, :root { --bg: oklch(0.16 0.008 255); --panel: oklch(0.195 0.009 255); --panel-hover: oklch(0.225 0.01 255); --line: oklch(0.28 0.01 255); --line-strong: oklch(0.36 0.012 255); --text: oklch(0.94 0.005 255); --text-2: oklch(0.76 0.012 255); --text-3: oklch(0.64 0.012 255); --accent: oklch(0.72 0.13 250); --accent-soft: oklch(0.72 0.13 250 / 0.14); --good: oklch(0.79 0.14 155); --warn: oklch(0.81 0.13 75); --danger: oklch(0.7 0.16 25); --font: system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", sans-serif; --ease: cubic-bezier(0.16, 1, 0.3, 1); } .ds-panel-t { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; } .ds-table { width: 100%; border-collapse: collapse; color: var(--text); font: 400 0.8125rem/1.45 var(--font); font-variant-numeric: tabular-nums; } .ds-table th, .ds-table td { height: 34px; padding: 0 12px; text-align: right; white-space: nowrap; } .ds-table th:first-child, .ds-table td:first-child { text-align: left; } .ds-table thead th { color: var(--text-3); font-weight: 500; border-bottom: 1px solid var(--line); } .ds-table tbody tr + tr td { border-top: 1px solid var(--line); } .ds-table tbody tr:hover td, .ds-table tbody tr[data-active=true] td { background: var(--accent-soft); } .ds-table tbody tr:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; } .ds-missing { color: var(--text-3); }"
+    },
+    {
+      "name": "Expandable Activity Row",
+      "kind": "custom",
+      "refersTo": "activity-row-hover",
+      "description": "An activity row with a chevron toggle; the chevron turns blue and rotates when the splits are open.",
+      "html": "<table class=\"ds-acts\"><tbody><tr class=\"ds-act\" aria-expanded=\"false\"><td><div class=\"ds-act-main\"><button class=\"ds-act-toggle\" aria-expanded=\"false\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m9 18 6-6-6-6\"/></svg><span>Treadmill Running</span></button><span class=\"ds-act-type\">Mon, Oct 26, 06:48 PM</span></div></td><td>34:31</td><td>2.14 km</td><td>124</td></tr><tr class=\"ds-act\" aria-expanded=\"true\"><td><div class=\"ds-act-main\"><button class=\"ds-act-toggle\" aria-expanded=\"true\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m9 18 6-6-6-6\"/></svg><span>Strength</span></button><span class=\"ds-act-type\">Mon, Oct 26, 07:26 PM</span></div></td><td>1:08:42</td><td></td><td>129</td></tr></tbody></table>",
+      "css": ":host, :root { --bg: oklch(0.16 0.008 255); --panel: oklch(0.195 0.009 255); --panel-hover: oklch(0.225 0.01 255); --line: oklch(0.28 0.01 255); --line-strong: oklch(0.36 0.012 255); --text: oklch(0.94 0.005 255); --text-2: oklch(0.76 0.012 255); --text-3: oklch(0.64 0.012 255); --accent: oklch(0.72 0.13 250); --accent-soft: oklch(0.72 0.13 250 / 0.14); --good: oklch(0.79 0.14 155); --warn: oklch(0.81 0.13 75); --danger: oklch(0.7 0.16 25); --font: system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", sans-serif; --ease: cubic-bezier(0.16, 1, 0.3, 1); } .ds-acts { width: 100%; border-collapse: collapse; background: var(--panel); color: var(--text); font: 400 0.8125rem/1.45 var(--font); font-variant-numeric: tabular-nums; } .ds-acts td { padding: 0 12px; text-align: right; white-space: nowrap; } .ds-acts td:first-child { text-align: left; } .ds-act + .ds-act td { border-top: 1px solid var(--line); } .ds-act { cursor: pointer; } .ds-act td { transition: background-color 150ms var(--ease); } .ds-act:hover td, .ds-act[aria-expanded=true] td { background: var(--panel-hover); } .ds-act-main { display: flex; flex-direction: column; justify-content: center; min-height: 44px; padding: 4px 0; } .ds-act-toggle { display: flex; align-items: center; gap: 8px; padding: 0; border: 0; background: none; color: var(--text); font: 500 0.8125rem/1.45 var(--font); cursor: pointer; } .ds-act-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; } .ds-act-toggle svg { color: var(--text-3); transition: transform 180ms var(--ease); } .ds-act[aria-expanded=true] .ds-act-toggle svg { transform: rotate(90deg); color: var(--accent); } .ds-act-type { padding-left: 22px; color: var(--text-3); font-size: 0.75rem; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Instrument Panel",
+    "overview": "Garmin Dash is a conventional dark dashboard built to the craft level of Linear, Whoop/Oura and Grafana/Datadog. It has one job: the morning answer reads as a departure from the owner's own normal, not as a score. The page is dense and quiet. A near-black, cool graphite ground holds one raised panel layer. Panels are divided by 1px hairlines instead of separate cards. Numbers are set in the system sans with tabular figures, so columns and readings line up without decoration.\n\nColour is information, not atmosphere. Most of the screen is neutral graphite and three grey text steps. One blue accent owns interaction. Green and amber appear only when a reading departs from normal, and each metric sets its own direction (lower resting HR is better). Missing data shows as missing (an em dash, \"—\"). A value that does not apply to the activity type shows as an empty cell.\n\nPrint and paper treatments, metaphor and themed concepts were rejected in PRODUCT.md. The world is screen-native and dark only.",
+    "keyCharacteristics": [
+      "Near-black cool graphite ground, one panel layer, 1px hairlines instead of cards.",
+      "System sans with tabular figures everywhere; no display face.",
+      "One blue accent for hover, focus, selection and the day cursor.",
+      "Green and amber only on departures from normal, with direction set per metric.",
+      "Dense rows (34px) and small type (13–14px); one large figure per metric.",
+      "Motion only for state changes, 150–200ms, with one strong ease-out curve."
+    ],
+    "rules": [
+      {
+        "name": "The One Signal Rule",
+        "body": "Blue means \"you are interacting with this\", and nothing else. Do not use it for status, decoration or headings.",
+        "section": "colors"
+      },
+      {
+        "name": "The Departure-Only Rule",
+        "body": "Green and amber appear only when a reading leaves the normal band, and each metric sets which direction is better. A reading inside the band shows the word \"Normal\" in Text Primary, not green.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "Every figure uses tabular numerals. Do not turn them off for a column or a metric.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Big Number Rule",
+        "body": "Only the per-metric departure is set large. Raw values and averages stay at label size beside it.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Layer Rule",
+        "body": "There is one panel layer. Do not nest cards in panels or stack panels on panels; divide with hairlines instead.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do separate regions with 1px Hairline dividers inside one Graphite Panel layer.",
+      "Do keep Signal Blue for interaction only: focus, hover state, selection, cursor and the primary action.",
+      "Do colour a reading green or amber only outside the normal band, with the better direction set per metric.",
+      "Do show missing data as \"—\" in Text Tertiary, and leave not-applicable cells empty.",
+      "Do keep tabular figures on and right-align numeric columns.",
+      "Do limit motion to state changes (150–200ms, `cubic-bezier(0.16, 1, 0.3, 1)`), and turn it off under reduced motion."
+    ],
+    "donts": [
+      "Don't build a grid of rounded stat cards with a chart in each and a hero score (the category default this world refuses).",
+      "Don't add shadows, gradients or a second panel layer.",
+      "Don't use green, amber or red for decoration, and don't use blue for status.",
+      "Don't estimate or fill in missing values.",
+      "Don't use print, paper or themed-metaphor treatments."
+    ]
+  }
+}

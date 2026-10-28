@@ -1,13 +1,20 @@
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
-import { garminDownload, garminGet } from "./garmin.ts";
+import type { Activity, ApiError, HealthDay } from "./api.types.ts";
+import { GarminError, garminDownload, garminGet } from "./garmin.ts";
 import type { ActivitySummary, DailySummaries, HrvSummaries, SleepSummary } from "./garmin.types.ts";
 import { parseSplits } from "./splits.ts";
 
 const app = new Hono();
 
+app.onError((err, c) => {
+  console.error(err);
+  const kind = err instanceof GarminError ? err.kind : "upstream";
+  return c.json<ApiError>({ error: err.message, kind }, 502);
+});
+
 app.get("/api/health", async (c) => {
-  const days = Number(c.req.query("days") ?? 7);
+  const days = Number(c.req.query("days") ?? 30);
   const end = new Date();
   const start = new Date(end.getTime() - (days - 1) * 86_400_000);
   // en-CA formats as YYYY-MM-DD in the local timezone.
@@ -20,7 +27,7 @@ app.get("/api/health", async (c) => {
     garminGet<HrvSummaries>(`/hrv-service/hrv/daily/${startDate}/${endDate}`),
   ]);
 
-  const rows = summaries.data.map((s) => {
+  const rows = summaries.data.map((s): HealthDay => {
     const sl = sleep.find((x) => x.calendarDate === s.calendarDate);
     const h = hrv.hrvSummaries.find((x) => x.calendarDate === s.calendarDate);
     return {
@@ -39,13 +46,13 @@ app.get("/api/health", async (c) => {
 });
 
 app.get("/api/activities", async (c) => {
-  const limit = Number(c.req.query("limit") ?? 20);
+  const limit = Number(c.req.query("limit") ?? 30);
   const activities = await garminGet<ActivitySummary[]>("/activitylist-service/activities/search/activities", {
     start: 0,
     limit,
   });
   return c.json(
-    activities.map((a) => ({
+    activities.map((a): Activity => ({
       id: a.activityId,
       name: a.activityName,
       type: a.activityType.typeKey,
@@ -53,6 +60,7 @@ app.get("/api/activities", async (c) => {
       distance: a.distance,
       duration: a.duration,
       avgHr: a.averageHR,
+      maxHr: a.maxHR,
     })),
   );
 });
