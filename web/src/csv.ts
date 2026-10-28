@@ -1,5 +1,5 @@
 export function downloadCsv(filename: string, rows: Record<string, unknown>[]) {
-  const headers = Object.keys(rows[0] ?? {});
+  const headers = [...new Set(rows.flatMap(Object.keys))];
   const escape = (v: unknown) => {
     const s = String(v ?? "");
     return /[",\n]/.test(s) ? `"${s.replaceAll('"', '""')}"` : s;

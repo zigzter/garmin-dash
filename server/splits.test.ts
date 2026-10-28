@@ -1,15 +1,29 @@
-import type { LapMesg } from "@garmin/fitsdk";
+import type { LapMesg, SplitMesg } from "@garmin/fitsdk";
 import { expect, test } from "vitest";
-import { lapsToSplits } from "./splits.ts";
+import { toSplits } from "./splits.ts";
 
-test("converts FIT laps to km splits with pace", () => {
+test("converts FIT laps and run/walk segments to splits", () => {
+  const start = new Date("2026-10-27T01:48:47Z");
   const laps = [
-    { totalDistance: 1000, totalTimerTime: 312.4, avgHeartRate: 150, maxHeartRate: 162, totalAscent: 8 },
-    { totalDistance: 0, totalTimerTime: 60 },
+    {
+      startTime: start,
+      totalDistance: 1000,
+      totalTimerTime: 312.4,
+      avgHeartRate: 150,
+      avgRunningCadence: 84,
+      avgFractionalCadence: 0.5,
+      avgStepLength: 1195.5,
+    },
   ] as LapMesg[];
+  const segments = [
+    { splitType: "rwdWalk", startTime: new Date("2026-10-27T01:50:14Z"), totalDistance: 50, totalTimerTime: 40 },
+    { splitType: "intervalActive", startTime: start, totalDistance: 1000, totalTimerTime: 312 },
+    { splitType: "rwdRun", startTime: start, totalDistance: 950, totalTimerTime: 272.4, avgRunningCadence: 86.25 },
+  ] as SplitMesg[];
 
-  expect(lapsToSplits(laps)).toEqual([
-    { lap: 1, distanceKm: 1, durationSec: 312, pacePerKm: "5:12", avgHr: 150, maxHr: 162, elevGainM: 8 },
-    { lap: 2, distanceKm: 0, durationSec: 60, pacePerKm: "", avgHr: undefined, maxHr: undefined, elevGainM: undefined },
-  ]);
+  const [lap, run, walk, ...rest] = toSplits(laps, segments);
+  expect(lap).toMatchObject({ kind: "lap", index: 1, pacePerKm: "5:12", avgCadenceSpm: 169, stepLengthM: 1.196 });
+  expect(run).toMatchObject({ kind: "run", index: 1, startSec: 0, avgCadenceSpm: 173 });
+  expect(walk).toMatchObject({ kind: "walk", index: 2, startSec: 87, pacePerKm: "13:20" });
+  expect(rest).toEqual([]);
 });

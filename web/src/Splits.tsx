@@ -34,11 +34,16 @@ export function Splits({ activity }: { activity: Activity }) {
 
   const effort = effortFor(activity.type, activity.distance);
   const hasDistance = effort !== "none";
+  const laps = splits?.filter((s) => s.kind === "lap");
+  const segmentCount = (splits?.length ?? 0) - (laps?.length ?? 0);
 
   return (
     <div className="splits">
       <div className="splits-head">
-        <span>{splits ? `${splits.length} ${splits.length === 1 ? "lap" : "laps"}` : "Loading laps…"}</span>
+        <span>
+          {laps ? `${laps.length} ${laps.length === 1 ? "lap" : "laps"}` : "Loading laps…"}
+          {segmentCount > 0 && ` · ${segmentCount} run/walk segments in export`}
+        </span>
         <button
           className="button button-primary"
           disabled={!splits?.length}
@@ -47,9 +52,9 @@ export function Splits({ activity }: { activity: Activity }) {
           <Download size={14} aria-hidden /> Export CSV
         </button>
       </div>
-      {splits === undefined ? (
+      {laps === undefined ? (
         <div className="skeleton" style={{ height: 120 }} />
-      ) : splits.length === 0 ? (
+      ) : laps.length === 0 ? (
         <p className="muted">This activity has no lap data.</p>
       ) : (
         <div className="table-scroll">
@@ -66,9 +71,9 @@ export function Splits({ activity }: { activity: Activity }) {
               </tr>
             </thead>
             <tbody>
-              {splits.map((s) => (
-                <tr key={s.lap}>
-                  <td>{s.lap}</td>
+              {laps.map((s) => (
+                <tr key={s.index}>
+                  <td>{s.index}</td>
                   {hasDistance && <td>{s.distanceKm.toFixed(2)} km</td>}
                   <td>{formatDuration(s.durationSec)}</td>
                   {hasDistance && <td>{formatEffort(effort, s.distanceKm * 1000, s.durationSec) ?? <Missing />}</td>}
