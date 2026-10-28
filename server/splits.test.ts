@@ -3,7 +3,7 @@ import { expect, test } from "vitest";
 import { toSplits } from "./splits.ts";
 
 test("converts FIT laps and run/walk segments to splits", () => {
-  const start = new Date("2026-10-27T01:48:47Z");
+  const start = new Date("2000-01-01T00:00:00Z");
   const laps = [
     {
       startTime: start,
@@ -16,7 +16,7 @@ test("converts FIT laps and run/walk segments to splits", () => {
     },
   ] as LapMesg[];
   const segments = [
-    { splitType: "rwdWalk", startTime: new Date("2026-10-27T01:50:14Z"), totalDistance: 50, totalTimerTime: 40 },
+    { splitType: "rwdWalk", startTime: new Date("2000-01-01T00:01:27Z"), totalDistance: 50, totalTimerTime: 40 },
     { splitType: "intervalActive", startTime: start, totalDistance: 1000, totalTimerTime: 312 },
     { splitType: "rwdRun", startTime: start, totalDistance: 950, totalTimerTime: 272.4, avgRunningCadence: 86.25 },
   ] as SplitMesg[];

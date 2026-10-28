@@ -1,5 +1,12 @@
 node_modules
 dist
-.env
+.env*
+!.env.example
 .impeccable/questions/
 .impeccable/review/
+.impeccable/hook.cache.json
+.impeccable/hook.pending.json
+.impeccable/config.local.json
+probe*.json
+*.fit
+*.csv

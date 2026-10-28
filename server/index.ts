@@ -9,8 +9,10 @@ const app = new Hono();
 
 app.onError((err, c) => {
   console.error(err);
-  const kind = err instanceof GarminError ? err.kind : "upstream";
-  return c.json<ApiError>({ error: err.message, kind }, 502);
+  if (err instanceof GarminError && err.kind === "auth") {
+    return c.json<ApiError>({ error: err.message, kind: "auth" }, 502);
+  }
+  return c.json<ApiError>({ error: "The Garmin request failed. See the server log for details.", kind: "upstream" }, 502);
 });
 
 app.get("/api/health", async (c) => {
@@ -65,9 +67,9 @@ app.get("/api/activities", async (c) => {
   );
 });
 
-app.get("/api/activities/:id/splits", async (c) => {
+app.get("/api/activities/:id{[0-9]+}/splits", async (c) => {
   const zip = await garminDownload(`/download-service/files/activity/${c.req.param("id")}`);
   return c.json(parseSplits(zip));
 });
 
-serve({ fetch: app.fetch, port: 8787 }, ({ port }) => console.log(`API on http://localhost:${port}`));
+serve({ fetch: app.fetch, hostname: "127.0.0.1", port: 8787 }, ({ port }) => console.log(`API on http://127.0.0.1:${port}`));
