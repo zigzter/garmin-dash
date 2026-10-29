@@ -39,6 +39,16 @@ export function formatType(typeKey: string): string {
   return words.charAt(0).toUpperCase() + words.slice(1);
 }
 
+const TRAINING_EFFECT_LABELS: Record<string, string> = {
+  VO2MAX: "VO2 max",
+  ANAEROBIC_CAPACITY: "Anaerobic",
+  LACTATE_THRESHOLD: "Threshold",
+};
+
+export function formatTrainingEffect(label: string): string {
+  return TRAINING_EFFECT_LABELS[label] ?? formatType(label.toLowerCase());
+}
+
 export type Effort = "pace" | "pace100" | "speed" | "none";
 
 // Selects the effort measure that makes sense for a sport.

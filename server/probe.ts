@@ -8,6 +8,8 @@ const calls: [string, Record<string, string | number>?][] = [
   ["/sleep-service/sleep/dailySleepSummariesByDate", { startDate, endDate }],
   [`/hrv-service/hrv/daily/${startDate}/${endDate}`],
   ["/activitylist-service/activities/search/activities", { start: 0, limit: 1 }],
+  ["/sleep-service/sleep/dailySleep", { date: endDate }],
+  [`/weight-service/weight/range/${startDate}/${endDate}`],
 ];
 
 for (const [path, params] of calls) {

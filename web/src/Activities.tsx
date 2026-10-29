@@ -1,11 +1,11 @@
 import { ChevronRight } from "lucide-react";
 import { Fragment, useState } from "react";
 import type { Activity } from "../../server/api.types.ts";
-import { effortFor, formatDuration, formatEffort, formatStart, formatType } from "./format.ts";
+import { effortFor, formatDuration, formatEffort, formatStart, formatTrainingEffect, formatType } from "./format.ts";
 import { Missing } from "./History.tsx";
 import { prefetchSplits, Splits } from "./Splits.tsx";
 
-const COLUMNS = 5;
+const COLUMNS = 7;
 
 export function Activities({ activities }: { activities: Activity[] }) {
   const [openId, setOpenId] = useState<number>();
@@ -28,6 +28,8 @@ export function Activities({ activities }: { activities: Activity[] }) {
                 <th scope="col" className="p2">Distance</th>
                 <th scope="col" className="p2">Pace / speed</th>
                 <th scope="col">Avg HR</th>
+                <th scope="col" className="p2">Load</th>
+                <th scope="col" className="p3">Training effect</th>
               </tr>
             </thead>
             <tbody>
@@ -72,6 +74,17 @@ export function Activities({ activities }: { activities: Activity[] }) {
                       <td className="p2">{effort === "none" ? null : `${((a.distance ?? 0) / 1000).toFixed(2)} km`}</td>
                       <td className="p2">{effort === "none" ? null : formatEffort(effort, a.distance ?? 0, a.duration ?? 0)}</td>
                       <td>{a.avgHr === undefined ? <Missing /> : Math.round(a.avgHr)}</td>
+                      <td className="p2">{a.trainingLoad === undefined ? <Missing /> : Math.round(a.trainingLoad)}</td>
+                      <td className="p3">
+                        {a.aerobicEffect === undefined || a.anaerobicEffect === undefined ? (
+                          <Missing />
+                        ) : (
+                          <>
+                            {a.effectLabel && <span className="muted">{formatTrainingEffect(a.effectLabel)} · </span>}
+                            {`${a.aerobicEffect.toFixed(1)} / ${a.anaerobicEffect.toFixed(1)}`}
+                          </>
+                        )}
+                      </td>
                     </tr>
                     {open && (
                       <tr id={`splits-${a.id}`}>

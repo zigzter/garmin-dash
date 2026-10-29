@@ -139,7 +139,7 @@ A cool graphite neutral ramp (hue 255) with one blue signal and two status hues 
 - **Signal Blue** (`signal-blue`): the only interaction colour. It is used for focus rings, links, the text caret, the day-cursor line on every trend, the expanded-row chevron and the primary button fill. Its wash (`signal-blue-wash`, 14% alpha) marks the active history row and text selection. `signal-blue-hover` and `signal-blue-pressed` are the primary button's hover and pressed fills, and `signal-blue-ink` is the dark text on that fill.
 
 ### Secondary
-- **Better Green** (`better-green`): a metric that is better than normal by more than the 5% normal band. It colours the departure figure and the cursor dot on that metric's trend.
+- **Better Green** (`better-green`): a metric that is better than normal by more than the normal band (5% of the average, or Garmin's balanced range for HRV). It colours the departure figure and the cursor dot on that metric's trend.
 - **Worse Amber** (`worse-amber`): a metric that is worse than normal by more than the normal band. It has the same placement as Better Green.
 
 ### Tertiary
@@ -200,7 +200,7 @@ The system is flat. There are no shadows. Depth comes from one tonal step (Graph
 
 ## Shapes
 
-Corners are slightly rounded and nest inward: panels use 8px (`rounded.md`), buttons and the nested splits table use 6px (`rounded.sm`), and focus rings and skeleton bars use 4px (`rounded.xs`). Borders are always 1px. Panels clip their contents, so table rows meet the rounded edge cleanly. Trend lines are 1.5px with round joins and caps. The average reference is a 1px dashed line (3 on, 3 off) over a faint 5% normal band.
+Corners are slightly rounded and nest inward: panels use 8px (`rounded.md`), buttons and the nested splits table use 6px (`rounded.sm`), and focus rings and skeleton bars use 4px (`rounded.xs`). Borders are always 1px. Panels clip their contents, so table rows meet the rounded edge cleanly. Trend lines are 1.5px with round joins and caps. The average reference is a 1px dashed line (3 on, 3 off) over a faint normal band (5% of the average, or Garmin's balanced range for HRV).
 
 ## Components
 

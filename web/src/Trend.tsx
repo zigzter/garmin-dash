@@ -7,19 +7,19 @@ interface TrendProps {
   label: string;
   values: (number | undefined)[];
   average: number | undefined;
-  band: number;
+  band: readonly [number, number] | undefined;
   minSpan: number;
   cursorIndex: number;
   cursorColor: string;
   onCursor: (index: number | undefined) => void;
 }
 
-// Draws a 30-day line with gaps for missing days, the normal band around the average, and the shared day cursor.
+// Draws a 30-day line with gaps for missing days, the normal band, the average, and the shared day cursor.
 export function Trend({ label, values, average, band, minSpan, cursorIndex, cursorColor, onCursor }: TrendProps) {
   const present = values.filter((v): v is number => v !== undefined);
   if (present.length === 0) return <svg className="trend" aria-hidden />;
 
-  const all = average === undefined ? present : [...present, average * (1 - band), average * (1 + band)];
+  const all = [...present, ...(average === undefined ? [] : [average]), ...(band ?? [])];
   let min = Math.min(...all);
   let max = Math.max(...all);
   if (max - min < minSpan) {
@@ -56,17 +56,9 @@ export function Trend({ label, values, average, band, minSpan, cursorIndex, curs
       onPointerDown={handlePointer}
       onPointerLeave={(e) => e.pointerType === "mouse" && onCursor(undefined)}
     >
+      {band && <rect className="trend-band" x={0} width={WIDTH} y={y(band[1])} height={y(band[0]) - y(band[1])} />}
       {average !== undefined && (
-        <>
-          <rect
-            className="trend-band"
-            x={0}
-            width={WIDTH}
-            y={y(average * (1 + band))}
-            height={y(average * (1 - band)) - y(average * (1 + band))}
-          />
-          <line className="trend-avg" x1={0} x2={WIDTH} y1={y(average)} y2={y(average)} vectorEffect="non-scaling-stroke" />
-        </>
+        <line className="trend-avg" x1={0} x2={WIDTH} y1={y(average)} y2={y(average)} vectorEffect="non-scaling-stroke" />
       )}
       <path className="trend-line" d={path} vectorEffect="non-scaling-stroke" />
       <line className="trend-cursor" x1={x(cursorIndex)} x2={x(cursorIndex)} y1={0} y2={HEIGHT} vectorEffect="non-scaling-stroke" />

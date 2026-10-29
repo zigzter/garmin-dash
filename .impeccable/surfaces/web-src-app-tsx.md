@@ -21,7 +21,7 @@ OWN-WORLD: Near-black cool graphite ground, one panel layer, 1px hairline divide
 
 STORY: The owner sees four recovery readings set against their 30-day average, sees which moved and which way, scans the month beneath, then opens a workout's splits and exports them.
 
-FIRST VIEWPORT: Top bar with product name, date and data range. Below, one full-width recovery strip split by hairlines into Sleep, HRV, Resting HR, Body Battery: label, value, departure vs 30-day average, and a 30-day trend with the average as a dashed reference line. Beneath, the 30-day table starts; the activity list follows. Primary action: Splits on an activity row, then Export CSV inside it.
+FIRST VIEWPORT: Top bar with product name, date and data range. Below, one full-width recovery strip split by hairlines into Sleep, HRV, Resting HR, Load (7-day): label, value, departure vs 30-day average, and a 30-day trend with the average as a dashed reference line. Beneath, the 30-day table starts; the activity list follows. Primary action: Splits on an activity row, then Export CSV inside it.
 
 FORM: Category standard (canon), executed at the craft of Linear, Whoop/Oura and Grafana/Datadog. Seed key 8e4c75a7. Signature interaction: one shared day cursor. Hovering any trend or any table row moves the cursor across all four trends and the strip shows that day's readings. Motion: 150-200 ms, state only; splits expand in place.
 

@@ -600,6 +600,18 @@ tbody tr + tr td.splits-cell {
     padding: var(--space-3);
   }
 
+  .metric-label {
+    flex-direction: column;
+  }
+
+  /* Keep an empty detail line so values align across a row. */
+  .metric-label span:last-child {
+    min-height: 1lh;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   th,
   td {
     padding: 0 var(--space-2);
