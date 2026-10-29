@@ -12,6 +12,7 @@ Personal single-user dashboard for Garmin health and activity data. Hono API ser
 - `npm run typecheck` — `tsc --noEmit` over `server/` and `web/src/`.
 - `npm test` — vitest. Single test: `npx vitest run server/splits.test.ts -t "<name>"`.
 - `npm run probe` — dumps raw Garmin API responses for the last few days; use it to inspect real response shapes.
+  `docs/garmin-api.md` lists every Garmin Personal API endpoint.
 - Docker: `docker compose up --build` (see `Dockerfile`, `compose.yaml`; targets a Synology NAS).
 
 Requires `GARMIN_API_KEY` in `.env` (see `.env.example`). `HOST` defaults to `127.0.0.1`; the Docker image sets `0.0.0.0`.
