@@ -23,16 +23,31 @@ app.get("/api/health", async (c) => {
   // en-CA formats as YYYY-MM-DD in the local timezone.
   const startDate = start.toLocaleDateString("en-CA");
   const endDate = end.toLocaleDateString("en-CA");
+  const loadStartDate = new Date(start.getTime() - 6 * 86_400_000).toLocaleDateString("en-CA");
 
-  const [summaries, sleep, hrv] = await Promise.all([
+  const [summaries, sleep, hrv, activities] = await Promise.all([
     garminGet<DailySummaries>("/usersummary-service/v2/dailysummaries", { startDate, endDate }),
     garminGet<SleepSummary[]>("/sleep-service/sleep/dailySleepSummariesByDate", { startDate, endDate }),
     garminGet<HrvSummaries>(`/hrv-service/hrv/daily/${startDate}/${endDate}`),
+    garminGet<ActivitySummary[]>("/activitylist-service/activities/search/activities", {
+      start: 0,
+      limit: 1000,
+      startDate: loadStartDate,
+      endDate,
+    }),
   ]);
 
   const rows = summaries.data.map((s): HealthDay => {
     const sl = sleep.find((x) => x.calendarDate === s.calendarDate);
     const h = hrv.hrvSummaries.find((x) => x.calendarDate === s.calendarDate);
+    const day = new Date(`${s.calendarDate}T12:00:00`);
+    const weekStart = new Date(day.getTime() - 6 * 86_400_000).toLocaleDateString("en-CA");
+    const weekLoad = activities
+      .filter((a) => {
+        const date = a.startTimeLocal.slice(0, 10);
+        return date >= weekStart && date <= s.calendarDate;
+      })
+      .reduce((sum, a) => sum + (a.activityTrainingLoad ?? 0), 0);
     return {
       date: s.calendarDate,
       steps: s.movement?.steps?.value,
@@ -42,7 +57,12 @@ app.get("/api/health", async (c) => {
       bodyBatteryLow: s.bodyBattery?.minValue,
       sleepSeconds: sl?.sleepTimeSeconds,
       sleepScore: sl?.sleepScores?.overall?.value,
+      sleepNeedSeconds: sl?.sleepNeed?.actual === undefined ? undefined : sl.sleepNeed.actual * 60,
       hrvAvg: h?.lastNightAvg,
+      hrvBalancedLow: h?.baseline?.balancedLow,
+      hrvBalancedHigh: h?.baseline?.balancedUpper,
+      hrvStatus: h?.status,
+      weekLoad,
     };
   });
   return c.json(rows.reverse());
@@ -64,6 +84,10 @@ app.get("/api/activities", async (c) => {
       duration: a.duration,
       avgHr: a.averageHR,
       maxHr: a.maxHR,
+      trainingLoad: a.activityTrainingLoad,
+      aerobicEffect: a.aerobicTrainingEffect,
+      anaerobicEffect: a.anaerobicTrainingEffect,
+      effectLabel: a.trainingEffectLabel,
     })),
   );
 });

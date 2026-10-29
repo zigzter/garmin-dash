@@ -12,10 +12,17 @@ export interface SleepSummary {
   calendarDate: string;
   sleepTimeSeconds?: number;
   sleepScores?: { overall?: { value?: number } };
+  // Minutes.
+  sleepNeed?: { actual?: number };
 }
 
 export interface HrvSummaries {
-  hrvSummaries: { calendarDate: string; lastNightAvg?: number }[];
+  hrvSummaries: {
+    calendarDate: string;
+    lastNightAvg?: number;
+    baseline?: { balancedLow?: number; balancedUpper?: number };
+    status?: string;
+  }[];
 }
 
 export interface ActivitySummary {
@@ -27,4 +34,8 @@ export interface ActivitySummary {
   duration?: number;
   averageHR?: number;
   maxHR?: number;
+  activityTrainingLoad?: number;
+  aerobicTrainingEffect?: number;
+  anaerobicTrainingEffect?: number;
+  trainingEffectLabel?: string;
 }

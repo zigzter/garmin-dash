@@ -7,7 +7,13 @@ export interface HealthDay {
   bodyBatteryLow?: number;
   sleepSeconds?: number;
   sleepScore?: number;
+  sleepNeedSeconds?: number;
   hrvAvg?: number;
+  hrvBalancedLow?: number;
+  hrvBalancedHigh?: number;
+  hrvStatus?: string;
+  // Sum of activity training load over the 7 days ending on this date.
+  weekLoad: number;
 }
 
 export interface Activity {
@@ -19,6 +25,10 @@ export interface Activity {
   duration?: number;
   avgHr?: number;
   maxHr?: number;
+  trainingLoad?: number;
+  aerobicEffect?: number;
+  anaerobicEffect?: number;
+  effectLabel?: string;
 }
 
 export interface ApiError {

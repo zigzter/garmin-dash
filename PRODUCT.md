@@ -11,7 +11,7 @@ web
 One person: the owner of the Garmin account. They train in mixed sports (strength, running, cycling and others).
 
 They use it in two situations:
-- **Morning check:** a quick read of last night's sleep, HRV, Body Battery and resting heart rate, to decide how hard to train today.
+- **Morning check:** a quick read of last night's sleep, HRV, resting heart rate and 7-day training load, to decide how hard to train today.
 - **After a workout:** a review of the activity and its splits, often followed by a CSV export of the splits.
 
 ## Product Purpose
@@ -30,8 +30,8 @@ Garmin Connect spreads these stats across many cards, tabs and screens, and it h
 
 ## Capabilities and Constraints
 
-- Health stats per day: steps, resting HR, average stress, Body Battery low and high, sleep duration, sleep score, HRV (last-night average).
-- Activities: recent list with name, type, start time, distance, duration and average HR.
+- Health stats per day: steps, resting HR, average stress, Body Battery low and high, sleep duration, sleep score, sleep need, HRV (last-night average, Garmin baseline range and status), 7-day training load.
+- Activities: recent list with name, type, start time, distance, duration, average HR, training load and training effect.
 - Splits: read from the activity's FIT file laps (distance, time, pace per km, average and max HR, ascent), exportable to CSV.
 - Activity types vary. Strength sessions have no distance and usually a single lap. Distance-based splits only make sense for some sports.
 - Days can have missing data (watch not worn, no sleep recorded, HRV not yet available).
